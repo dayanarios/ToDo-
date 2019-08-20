@@ -57,6 +57,9 @@
                     <navigationItem key="navigationItem" title="Categories" id="w0r-Vd-U70">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="itW-T7-OdL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="cm1-SY-PRS" id="vn2-51-Ymm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

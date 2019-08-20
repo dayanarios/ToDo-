@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Category {
-    var name : String = ""
+class Category : Object{
+    @objc dynamic var name : String = ""
+    
+    //creating a one to many relationship to Item objects
+    let items = List<Item>()
     
 }

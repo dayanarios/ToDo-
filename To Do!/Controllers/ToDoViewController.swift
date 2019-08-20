@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ToDoViewController: UITableViewController {
+    
+    var toDoItems : Results<Item>?
+    
+    let realm = try! Realm()
+    
+    var selectedCategory : Category? {
+        didSet{
+            loadItems()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -86,5 +93,9 @@ class ToDoViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func loadItems(){
+        
+    }
 
 }
