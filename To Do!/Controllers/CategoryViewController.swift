@@ -38,7 +38,6 @@ class CategoryViewController: UITableViewController {
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added" //categories may be nil
 
-        // Configure the cell...
 
         return cell
     }
@@ -55,7 +54,11 @@ class CategoryViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ToDoViewController
         
-        //filter items by category
+        //filter items by category by selected row
+        //set selected row
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories?[indexPath.row]
+        }
     }
  
 
