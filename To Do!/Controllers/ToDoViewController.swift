@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 
 class ToDoViewController: SwipeTableViewController  {
@@ -27,7 +28,8 @@ class ToDoViewController: SwipeTableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = 80.0
+        tableView.separatorStyle = .none
+       
 
     }
 
@@ -42,12 +44,19 @@ class ToDoViewController: SwipeTableViewController  {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        //gets reference from super view controller (swipeTableViewCell)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
 
         // Configure the cell...
         //if an item exist
         if let item = toDoItems?[indexPath.row]{
             cell.textLabel?.text = item.title
+            
+            //gradient effect for cells
+            if let color  = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat( indexPath.row) / CGFloat(toDoItems!.count)){
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+            }
             
             //toggles checkmark depending on done status
             cell.accessoryType = item.done ? .checkmark : .none
@@ -132,8 +141,26 @@ class ToDoViewController: SwipeTableViewController  {
         
         tableView.reloadData()
     }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        //if an item exist at this location
+        if let item = toDoItems?[indexPath.row]{
+            do {
+                try realm.write {
+                    realm.delete(item)
+                }
+            }
+            catch
+            {
+                print("error deleting item, \(error)")
+            }
+        }
+    }
 
 }
+
+
 
 extension ToDoViewController: UISearchBarDelegate{
     
