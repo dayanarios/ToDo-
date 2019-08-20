@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		FB82404B230BB80000D1715A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82404A230BB80000D1715A /* CategoryViewController.swift */; };
 		FB82404E230BB86600D1715A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82404D230BB86600D1715A /* Category.swift */; };
 		FB824050230BB86B00D1715A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82404F230BB86B00D1715A /* Item.swift */; };
+		FB9A59B2230C705D007CFCBD /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A59B1230C705D007CFCBD /* SwipeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FB82404A230BB80000D1715A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FB82404D230BB86600D1715A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		FB82404F230BB86B00D1715A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FB9A59B1230C705D007CFCBD /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +62,6 @@
 				A1800C6F2DF94B86B83C8B81 /* Pods-To Do!.debug.xcconfig */,
 				820E222A65ED7259812F97A9 /* Pods-To Do!.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -106,6 +107,7 @@
 		FB824046230BB36C00D1715A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FB9A59B1230C705D007CFCBD /* SwipeTableViewController.swift */,
 				FB82404A230BB80000D1715A /* CategoryViewController.swift */,
 				FB824048230BB7F300D1715A /* ToDoViewController.swift */,
 			);
@@ -249,6 +251,7 @@
 				FB824049230BB7F300D1715A /* ToDoViewController.swift in Sources */,
 				FB82404B230BB80000D1715A /* CategoryViewController.swift in Sources */,
 				FB824034230BB33D00D1715A /* AppDelegate.swift in Sources */,
+				FB9A59B2230C705D007CFCBD /* SwipeTableViewController.swift in Sources */,
 				FB82404E230BB86600D1715A /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

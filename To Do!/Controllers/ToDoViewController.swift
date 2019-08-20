@@ -9,7 +9,8 @@
 import UIKit
 import RealmSwift
 
-class ToDoViewController: UITableViewController {
+
+class ToDoViewController: SwipeTableViewController  {
     
     var toDoItems : Results<Item>?
     
@@ -26,6 +27,7 @@ class ToDoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = 80.0
 
     }
 
@@ -66,9 +68,7 @@ class ToDoViewController: UITableViewController {
         if let item = toDoItems?[indexPath.row]{
             do{
                 try realm.write {
-                    print("item done before write: \(item.done)")
                     item.done = !item.done
-                    print("item done: \(item.done)")
                 }
             }
             catch{
