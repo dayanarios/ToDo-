@@ -18,6 +18,8 @@ class ToDoViewController: SwipeTableViewController  {
     let realm = try! Realm()
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //loads corresponding items to selected category
     var selectedCategory : Category? {
         didSet{
@@ -29,9 +31,28 @@ class ToDoViewController: SwipeTableViewController  {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none
-       
+        
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let colorHex = selectedCategory?.color else {fatalError()}  //if this is not nil proceed
+        
+        title = selectedCategory!.name
+        
+        updateNavBar(withHexCode: colorHex)
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        updateNavBar(withHexCode: "007AFF")
+        
+        
+    }
+
+
+    
 
     // MARK: - Table view data source
 
@@ -156,6 +177,23 @@ class ToDoViewController: SwipeTableViewController  {
                 print("error deleting item, \(error)")
             }
         }
+    }
+    
+    
+    //MARK: - Nav Bar Methods
+    func updateNavBar(withHexCode: String) {
+        guard let navBar = navigationController?.navigationBar else {
+            fatalError("Navigation Controller does not exist.")
+        }
+        
+        guard let navBarColor = UIColor(hexString: withHexCode) else { fatalError()}
+        navBar.barTintColor = navBarColor
+        
+        navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+        
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+        
+        searchBar.barTintColor = navBarColor
     }
 
 }
